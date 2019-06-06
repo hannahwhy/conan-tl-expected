@@ -9,7 +9,6 @@ class ExpectedConan(ConanFile):
     author = "Simon Brand <tartanllama@gmail.com>"
     url = "https://github.com/TartanLlama/expected"
     description = "C++11/14/17 std::expected with functional-style extensions"
-    settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
 
     def source(self):
@@ -37,3 +36,6 @@ conan_basic_setup()
 
     def package(self):
         self.copy('*.hpp', dst='include/tl', src='tl')
+
+    def package_id(self):
+        self.info.header_only()
