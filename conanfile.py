@@ -5,7 +5,6 @@ class TlExpectedConan(ConanFile):
     name = "tl-expected"
     version = "1.0.0"
     license = "CC0-1.0"
-    author = "Simon Brand <tartanllama@gmail.com>"
     homepage = "https://tl.tartanllama.xyz"
     url = "https://github.com/yipdw/conan-tl-expected"
     description = "C++11/14/17 std::expected with functional-style extensions"
