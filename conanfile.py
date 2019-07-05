@@ -8,7 +8,6 @@ class TlExpectedConan(ConanFile):
     homepage = "https://tl.tartanllama.xyz"
     url = "https://github.com/yipdw/conan-tl-expected"
     description = "C++11/14/17 std::expected with functional-style extensions"
-    no_copy_source = True
     options = {
         "enable_tests": [True, False]
     }
