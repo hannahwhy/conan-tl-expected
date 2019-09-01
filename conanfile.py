@@ -3,7 +3,7 @@ import os
 
 class TlExpectedConan(ConanFile):
     name = "tl-expected"
-    version = "1.0.0"
+    version = "1.0.1"
     license = "CC0-1.0"
     homepage = "https://tl.tartanllama.xyz"
     url = "https://github.com/yipdw/conan-tl-expected"
@@ -16,18 +16,14 @@ class TlExpectedConan(ConanFile):
     }
 
     def source(self):
-        url = "https://github.com/TartanLlama/expected/archive/v{}.zip".format(self.version)
-        sha256 = "c1733556cbd3b532a02b68e2fbc2091b5bc2cccc279e4f6c6bd83877aabd4b02"
-        tools.get(url, sha256=sha256)
-
-    @property
-    def tl_expected_source_folder(self):
-        return os.path.join(self.source_folder, "expected-{}".format(self.version))
+        git = tools.Git(folder="tl-expected")
+        git.clone("https://github.com/TartanLlama/expected")
+        git.checkout("6fe2af5191214cce620899f7f06585c047b9f1fc")
 
     def configure_cmake(self):
         cmake = CMake(self)
         cmake.definitions["EXPECTED_ENABLE_TESTS"] = self.options.enable_tests
-        cmake.configure(source_folder=self.tl_expected_source_folder)
+        cmake.configure(source_folder="tl-expected")
 
         return cmake
 
